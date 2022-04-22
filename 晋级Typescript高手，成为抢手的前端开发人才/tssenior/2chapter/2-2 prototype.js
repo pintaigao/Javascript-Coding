@@ -33,9 +33,32 @@ QQUsers.prototype.show = function () {
   console.log(`共同的好友是:${this.commonfriends}`);
 };
 
-let QQZhangSan = new QQUsers("37834522", 15, "王阳明传人");
-let QQLisi = new QQUsers("30424232", 10, "袁隆平的徒弟");
-
 console.log("QQLisi:", QQLisi);
 console.log("QQLisi.commonfriends:", QQLisi.commonfriends);
 console.log("QQZhangSan.commonfriends:", QQZhangSan.commonfriends);
+
+/* 
+console.log("QQUsers.prototype:", QQUsers.prototype);
+
+QQUsers.prototype={
+  constructor: ƒ QQUsers(QQNo_, QQAge_, QQMark_)
+  __proto__: Object
+} 
+*/
+
+QQUsers.prototype.commonfriends.push("大树");
+console.log("QQZhangSan.commonfriends", QQZhangSan.commonfriends);
+console.log("QQLisi.commonfriends", QQLisi.commonfriends);
+console.log("QQUsers.prototype.commonfriends", QQUsers.prototype.commonfriends);
+
+// 5.3 创建实例后再覆盖原型
+QQUsers.prototype = {
+  commonfriends: ["abc", "bcd", "骑驴看海"],
+};
+
+console.log("QQUsers.prototype:", QQUsers.prototype);
+console.log("QQZhangSan.commonfriends:", QQZhangSan.commonfriends);
+console.log(
+  "QQUsers.prototype.commonfriends:",
+  QQUsers.prototype.commonfriends
+);
